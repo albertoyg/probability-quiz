@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-probabilityquizapp-staging-74938-authRole",
+      "UnauthRoleArn": "arn:aws:iam::900615519006:role/amplify-probabilityquizapp-staging-74938-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::900615519006:role/amplify-probabilityquizapp-staging-74938-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-probabilityquizapp-staging-74938-deployment",
+      "UnauthRoleName": "amplify-probabilityquizapp-staging-74938-unauthRole",
+      "StackName": "amplify-probabilityquizapp-staging-74938",
+      "StackId": "arn:aws:cloudformation:us-west-2:900615519006:stack/amplify-probabilityquizapp-staging-74938/cb9de780-342d-11ee-b5af-0a79168bea31",
+      "AmplifyAppId": "da174zapsig41"
+    },
+    "categories": {
+      "auth": {
+        "probabilityquizapp": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+    "AppSyncApiName": "probabilityquizapp",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "S3DeploymentBucket": "amplify-probabilityquizapp-staging-74938-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/c4c0083d86f624333212ad7167134e333dcf1a2a"
+}
