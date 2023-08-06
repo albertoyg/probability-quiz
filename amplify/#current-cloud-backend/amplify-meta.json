@@ -12,6 +12,38 @@
       "AmplifyAppId": "da174zapsig41"
     }
   },
+  "api": {
+    "probabilityquizapp": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ],
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 30,
+              "description": "api key description"
+            }
+          }
+        },
+        "GraphQLAPIIdOutput": "72vuhu6vpvhb7kczn77xq6fniy",
+        "GraphQLAPIEndpointOutput": "https://bhopfgdeone3vayyeiimlu4w5m.appsync-api.us-west-2.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-johxlm2v6nexfgalchj5s5abkq"
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync",
+      "lastPushTimeStamp": "2023-08-06T21:19:01.997Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-probabilityquizapp-staging-74938-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apiprobabilityquizapp"
+      },
+      "lastPushDirHash": "z6Nh8cXsDfMz60nyy9Xfp7rMqbI="
+    }
+  },
   "auth": {
     "probabilityquizapp": {
       "customAuth": false,
@@ -50,43 +82,11 @@
         "IdentityPoolName": "testAuthIdentityPool__staging",
         "UserPoolName": "probabilityquizapp"
       },
-      "lastPushTimeStamp": "2023-08-06T07:57:35.447Z",
+      "lastPushTimeStamp": "2023-08-06T21:08:26.189Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-probabilityquizapp-staging-74938-deployment/amplify-cfn-templates/auth/probabilityquizapp-cloudformation-template.json",
         "logicalId": "authprobabilityquizapp"
       }
-    }
-  },
-  "api": {
-    "probabilityquizapp": {
-      "service": "AppSync",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
-      "output": {
-        "authConfig": {
-          "defaultAuthentication": {
-            "authenticationType": "API_KEY",
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 30,
-              "description": "api key description"
-            }
-          },
-          "additionalAuthenticationProviders": [
-            {
-              "authenticationType": "AWS_IAM"
-            }
-          ]
-        },
-        "GraphQLAPIIdOutput": "72vuhu6vpvhb7kczn77xq6fniy",
-        "GraphQLAPIEndpointOutput": "https://bhopfgdeone3vayyeiimlu4w5m.appsync-api.us-west-2.amazonaws.com/graphql",
-        "GraphQLAPIKeyOutput": "da2-johxlm2v6nexfgalchj5s5abkq"
-      },
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-probabilityquizapp-staging-74938-deployment/amplify-cfn-templates/api/cloudformation-template.json",
-        "logicalId": "apiprobabilityquizapp"
-      },
-      "lastPushTimeStamp": "2023-08-06T07:57:36.979Z",
-      "lastPushDirHash": "qhujEwJ/vatreuL+VnWjBVPJ65Q="
     }
   }
 }

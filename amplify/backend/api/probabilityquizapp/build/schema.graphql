@@ -1,3 +1,33 @@
+type Scores @aws_iam @aws_api_key {
+  id: ID!
+  score: Int
+  Quiz: Quiz
+  owner: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+  scoresQuizId: ID
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+type Quiz @aws_iam @aws_api_key {
+  id: ID!
+  difficulty: Difficulty
+  Questions(filter: ModelQuestionsFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelQuestionsConnection
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
 type Answers @aws_iam @aws_api_key {
   id: ID!
   text: String
@@ -14,6 +44,7 @@ type Questions @aws_iam @aws_api_key {
   text: String
   answerss(filter: ModelAnswersQuestionsFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelAnswersQuestionsConnection
   AcceptedAnswer: Answers
+  quizID: ID!
   createdAt: AWSDateTime!
   updatedAt: AWSDateTime!
   _version: Int!
@@ -185,6 +216,173 @@ enum ModelSortDirection {
   DESC
 }
 
+type ModelScoresConnection @aws_api_key @aws_iam {
+  items: [Scores]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelScoresFilterInput {
+  id: ModelIDInput
+  score: ModelIntInput
+  owner: ModelStringInput
+  and: [ModelScoresFilterInput]
+  or: [ModelScoresFilterInput]
+  not: ModelScoresFilterInput
+  _deleted: ModelBooleanInput
+  scoresQuizId: ModelIDInput
+}
+
+type Query {
+  getScores(id: ID!): Scores @aws_api_key @aws_iam
+  listScores(filter: ModelScoresFilterInput, limit: Int, nextToken: String): ModelScoresConnection @aws_api_key @aws_iam
+  syncScores(filter: ModelScoresFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelScoresConnection @aws_api_key @aws_iam
+  getQuiz(id: ID!): Quiz @aws_api_key @aws_iam
+  listQuizzes(filter: ModelQuizFilterInput, limit: Int, nextToken: String): ModelQuizConnection @aws_api_key @aws_iam
+  syncQuizzes(filter: ModelQuizFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelQuizConnection @aws_api_key @aws_iam
+  getAnswers(id: ID!): Answers @aws_api_key @aws_iam
+  listAnswers(filter: ModelAnswersFilterInput, limit: Int, nextToken: String): ModelAnswersConnection @aws_api_key @aws_iam
+  syncAnswers(filter: ModelAnswersFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelAnswersConnection @aws_api_key @aws_iam
+  getQuestions(id: ID!): Questions @aws_api_key @aws_iam
+  listQuestions(filter: ModelQuestionsFilterInput, limit: Int, nextToken: String): ModelQuestionsConnection @aws_api_key @aws_iam
+  syncQuestions(filter: ModelQuestionsFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelQuestionsConnection @aws_api_key @aws_iam
+  questionsByQuizID(quizID: ID!, sortDirection: ModelSortDirection, filter: ModelQuestionsFilterInput, limit: Int, nextToken: String): ModelQuestionsConnection @aws_api_key @aws_iam
+  getAnswersQuestions(id: ID!): AnswersQuestions @aws_api_key @aws_iam
+  listAnswersQuestions(filter: ModelAnswersQuestionsFilterInput, limit: Int, nextToken: String): ModelAnswersQuestionsConnection @aws_api_key @aws_iam
+  syncAnswersQuestions(filter: ModelAnswersQuestionsFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelAnswersQuestionsConnection @aws_api_key @aws_iam
+  answersQuestionsByAnswersId(answersId: ID!, sortDirection: ModelSortDirection, filter: ModelAnswersQuestionsFilterInput, limit: Int, nextToken: String): ModelAnswersQuestionsConnection @aws_api_key @aws_iam
+  answersQuestionsByQuestionsId(questionsId: ID!, sortDirection: ModelSortDirection, filter: ModelAnswersQuestionsFilterInput, limit: Int, nextToken: String): ModelAnswersQuestionsConnection @aws_api_key @aws_iam
+}
+
+input ModelScoresConditionInput {
+  score: ModelIntInput
+  owner: ModelStringInput
+  and: [ModelScoresConditionInput]
+  or: [ModelScoresConditionInput]
+  not: ModelScoresConditionInput
+  _deleted: ModelBooleanInput
+  scoresQuizId: ModelIDInput
+}
+
+input CreateScoresInput {
+  id: ID
+  score: Int
+  owner: String
+  _version: Int
+  scoresQuizId: ID
+}
+
+input UpdateScoresInput {
+  id: ID!
+  score: Int
+  owner: String
+  _version: Int
+  scoresQuizId: ID
+}
+
+input DeleteScoresInput {
+  id: ID!
+  _version: Int
+}
+
+type Mutation {
+  createScores(input: CreateScoresInput!, condition: ModelScoresConditionInput): Scores @aws_api_key @aws_iam
+  updateScores(input: UpdateScoresInput!, condition: ModelScoresConditionInput): Scores @aws_api_key @aws_iam
+  deleteScores(input: DeleteScoresInput!, condition: ModelScoresConditionInput): Scores @aws_api_key @aws_iam
+  createQuiz(input: CreateQuizInput!, condition: ModelQuizConditionInput): Quiz @aws_api_key @aws_iam
+  updateQuiz(input: UpdateQuizInput!, condition: ModelQuizConditionInput): Quiz @aws_api_key @aws_iam
+  deleteQuiz(input: DeleteQuizInput!, condition: ModelQuizConditionInput): Quiz @aws_api_key @aws_iam
+  createAnswers(input: CreateAnswersInput!, condition: ModelAnswersConditionInput): Answers @aws_api_key @aws_iam
+  updateAnswers(input: UpdateAnswersInput!, condition: ModelAnswersConditionInput): Answers @aws_api_key @aws_iam
+  deleteAnswers(input: DeleteAnswersInput!, condition: ModelAnswersConditionInput): Answers @aws_api_key @aws_iam
+  createQuestions(input: CreateQuestionsInput!, condition: ModelQuestionsConditionInput): Questions @aws_api_key @aws_iam
+  updateQuestions(input: UpdateQuestionsInput!, condition: ModelQuestionsConditionInput): Questions @aws_api_key @aws_iam
+  deleteQuestions(input: DeleteQuestionsInput!, condition: ModelQuestionsConditionInput): Questions @aws_api_key @aws_iam
+  createAnswersQuestions(input: CreateAnswersQuestionsInput!, condition: ModelAnswersQuestionsConditionInput): AnswersQuestions @aws_api_key @aws_iam
+  updateAnswersQuestions(input: UpdateAnswersQuestionsInput!, condition: ModelAnswersQuestionsConditionInput): AnswersQuestions @aws_api_key @aws_iam
+  deleteAnswersQuestions(input: DeleteAnswersQuestionsInput!, condition: ModelAnswersQuestionsConditionInput): AnswersQuestions @aws_api_key @aws_iam
+}
+
+input ModelSubscriptionScoresFilterInput {
+  id: ModelSubscriptionIDInput
+  score: ModelSubscriptionIntInput
+  owner: ModelSubscriptionStringInput
+  and: [ModelSubscriptionScoresFilterInput]
+  or: [ModelSubscriptionScoresFilterInput]
+  _deleted: ModelBooleanInput
+}
+
+type Subscription {
+  onCreateScores(filter: ModelSubscriptionScoresFilterInput): Scores @aws_subscribe(mutations: ["createScores"]) @aws_api_key @aws_iam
+  onUpdateScores(filter: ModelSubscriptionScoresFilterInput): Scores @aws_subscribe(mutations: ["updateScores"]) @aws_api_key @aws_iam
+  onDeleteScores(filter: ModelSubscriptionScoresFilterInput): Scores @aws_subscribe(mutations: ["deleteScores"]) @aws_api_key @aws_iam
+  onCreateQuiz(filter: ModelSubscriptionQuizFilterInput): Quiz @aws_subscribe(mutations: ["createQuiz"]) @aws_api_key @aws_iam
+  onUpdateQuiz(filter: ModelSubscriptionQuizFilterInput): Quiz @aws_subscribe(mutations: ["updateQuiz"]) @aws_api_key @aws_iam
+  onDeleteQuiz(filter: ModelSubscriptionQuizFilterInput): Quiz @aws_subscribe(mutations: ["deleteQuiz"]) @aws_api_key @aws_iam
+  onCreateAnswers(filter: ModelSubscriptionAnswersFilterInput): Answers @aws_subscribe(mutations: ["createAnswers"]) @aws_api_key @aws_iam
+  onUpdateAnswers(filter: ModelSubscriptionAnswersFilterInput): Answers @aws_subscribe(mutations: ["updateAnswers"]) @aws_api_key @aws_iam
+  onDeleteAnswers(filter: ModelSubscriptionAnswersFilterInput): Answers @aws_subscribe(mutations: ["deleteAnswers"]) @aws_api_key @aws_iam
+  onCreateQuestions(filter: ModelSubscriptionQuestionsFilterInput): Questions @aws_subscribe(mutations: ["createQuestions"]) @aws_api_key @aws_iam
+  onUpdateQuestions(filter: ModelSubscriptionQuestionsFilterInput): Questions @aws_subscribe(mutations: ["updateQuestions"]) @aws_api_key @aws_iam
+  onDeleteQuestions(filter: ModelSubscriptionQuestionsFilterInput): Questions @aws_subscribe(mutations: ["deleteQuestions"]) @aws_api_key @aws_iam
+  onCreateAnswersQuestions(filter: ModelSubscriptionAnswersQuestionsFilterInput): AnswersQuestions @aws_subscribe(mutations: ["createAnswersQuestions"]) @aws_api_key @aws_iam
+  onUpdateAnswersQuestions(filter: ModelSubscriptionAnswersQuestionsFilterInput): AnswersQuestions @aws_subscribe(mutations: ["updateAnswersQuestions"]) @aws_api_key @aws_iam
+  onDeleteAnswersQuestions(filter: ModelSubscriptionAnswersQuestionsFilterInput): AnswersQuestions @aws_subscribe(mutations: ["deleteAnswersQuestions"]) @aws_api_key @aws_iam
+}
+
+type ModelQuizConnection @aws_api_key @aws_iam {
+  items: [Quiz]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelDifficultyInput {
+  eq: Difficulty
+  ne: Difficulty
+}
+
+input ModelQuizFilterInput {
+  id: ModelIDInput
+  difficulty: ModelDifficultyInput
+  and: [ModelQuizFilterInput]
+  or: [ModelQuizFilterInput]
+  not: ModelQuizFilterInput
+  _deleted: ModelBooleanInput
+}
+
+input ModelQuizConditionInput {
+  difficulty: ModelDifficultyInput
+  and: [ModelQuizConditionInput]
+  or: [ModelQuizConditionInput]
+  not: ModelQuizConditionInput
+  _deleted: ModelBooleanInput
+}
+
+input CreateQuizInput {
+  id: ID
+  difficulty: Difficulty
+  _version: Int
+}
+
+input UpdateQuizInput {
+  id: ID!
+  difficulty: Difficulty
+  _version: Int
+}
+
+input DeleteQuizInput {
+  id: ID!
+  _version: Int
+}
+
+input ModelSubscriptionQuizFilterInput {
+  id: ModelSubscriptionIDInput
+  difficulty: ModelSubscriptionStringInput
+  and: [ModelSubscriptionQuizFilterInput]
+  or: [ModelSubscriptionQuizFilterInput]
+  _deleted: ModelBooleanInput
+}
+
 type ModelAnswersConnection @aws_api_key @aws_iam {
   items: [Answers]!
   nextToken: String
@@ -198,20 +396,6 @@ input ModelAnswersFilterInput {
   or: [ModelAnswersFilterInput]
   not: ModelAnswersFilterInput
   _deleted: ModelBooleanInput
-}
-
-type Query {
-  getAnswers(id: ID!): Answers @aws_api_key @aws_iam
-  listAnswers(filter: ModelAnswersFilterInput, limit: Int, nextToken: String): ModelAnswersConnection @aws_api_key @aws_iam
-  syncAnswers(filter: ModelAnswersFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelAnswersConnection @aws_api_key @aws_iam
-  getQuestions(id: ID!): Questions @aws_api_key @aws_iam
-  listQuestions(filter: ModelQuestionsFilterInput, limit: Int, nextToken: String): ModelQuestionsConnection @aws_api_key @aws_iam
-  syncQuestions(filter: ModelQuestionsFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelQuestionsConnection @aws_api_key @aws_iam
-  getAnswersQuestions(id: ID!): AnswersQuestions @aws_api_key @aws_iam
-  listAnswersQuestions(filter: ModelAnswersQuestionsFilterInput, limit: Int, nextToken: String): ModelAnswersQuestionsConnection @aws_api_key @aws_iam
-  syncAnswersQuestions(filter: ModelAnswersQuestionsFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelAnswersQuestionsConnection @aws_api_key @aws_iam
-  answersQuestionsByAnswersId(answersId: ID!, sortDirection: ModelSortDirection, filter: ModelAnswersQuestionsFilterInput, limit: Int, nextToken: String): ModelAnswersQuestionsConnection @aws_api_key @aws_iam
-  answersQuestionsByQuestionsId(questionsId: ID!, sortDirection: ModelSortDirection, filter: ModelAnswersQuestionsFilterInput, limit: Int, nextToken: String): ModelAnswersQuestionsConnection @aws_api_key @aws_iam
 }
 
 input ModelAnswersConditionInput {
@@ -239,18 +423,6 @@ input DeleteAnswersInput {
   _version: Int
 }
 
-type Mutation {
-  createAnswers(input: CreateAnswersInput!, condition: ModelAnswersConditionInput): Answers @aws_api_key @aws_iam
-  updateAnswers(input: UpdateAnswersInput!, condition: ModelAnswersConditionInput): Answers @aws_api_key @aws_iam
-  deleteAnswers(input: DeleteAnswersInput!, condition: ModelAnswersConditionInput): Answers @aws_api_key @aws_iam
-  createQuestions(input: CreateQuestionsInput!, condition: ModelQuestionsConditionInput): Questions @aws_api_key @aws_iam
-  updateQuestions(input: UpdateQuestionsInput!, condition: ModelQuestionsConditionInput): Questions @aws_api_key @aws_iam
-  deleteQuestions(input: DeleteQuestionsInput!, condition: ModelQuestionsConditionInput): Questions @aws_api_key @aws_iam
-  createAnswersQuestions(input: CreateAnswersQuestionsInput!, condition: ModelAnswersQuestionsConditionInput): AnswersQuestions @aws_api_key @aws_iam
-  updateAnswersQuestions(input: UpdateAnswersQuestionsInput!, condition: ModelAnswersQuestionsConditionInput): AnswersQuestions @aws_api_key @aws_iam
-  deleteAnswersQuestions(input: DeleteAnswersQuestionsInput!, condition: ModelAnswersQuestionsConditionInput): AnswersQuestions @aws_api_key @aws_iam
-}
-
 input ModelSubscriptionAnswersFilterInput {
   id: ModelSubscriptionIDInput
   text: ModelSubscriptionStringInput
@@ -259,19 +431,7 @@ input ModelSubscriptionAnswersFilterInput {
   _deleted: ModelBooleanInput
 }
 
-type Subscription {
-  onCreateAnswers(filter: ModelSubscriptionAnswersFilterInput): Answers @aws_subscribe(mutations: ["createAnswers"]) @aws_api_key @aws_iam
-  onUpdateAnswers(filter: ModelSubscriptionAnswersFilterInput): Answers @aws_subscribe(mutations: ["updateAnswers"]) @aws_api_key @aws_iam
-  onDeleteAnswers(filter: ModelSubscriptionAnswersFilterInput): Answers @aws_subscribe(mutations: ["deleteAnswers"]) @aws_api_key @aws_iam
-  onCreateQuestions(filter: ModelSubscriptionQuestionsFilterInput): Questions @aws_subscribe(mutations: ["createQuestions"]) @aws_api_key @aws_iam
-  onUpdateQuestions(filter: ModelSubscriptionQuestionsFilterInput): Questions @aws_subscribe(mutations: ["updateQuestions"]) @aws_api_key @aws_iam
-  onDeleteQuestions(filter: ModelSubscriptionQuestionsFilterInput): Questions @aws_subscribe(mutations: ["deleteQuestions"]) @aws_api_key @aws_iam
-  onCreateAnswersQuestions(filter: ModelSubscriptionAnswersQuestionsFilterInput): AnswersQuestions @aws_subscribe(mutations: ["createAnswersQuestions"]) @aws_api_key @aws_iam
-  onUpdateAnswersQuestions(filter: ModelSubscriptionAnswersQuestionsFilterInput): AnswersQuestions @aws_subscribe(mutations: ["updateAnswersQuestions"]) @aws_api_key @aws_iam
-  onDeleteAnswersQuestions(filter: ModelSubscriptionAnswersQuestionsFilterInput): AnswersQuestions @aws_subscribe(mutations: ["deleteAnswersQuestions"]) @aws_api_key @aws_iam
-}
-
-type ModelQuestionsConnection @aws_api_key @aws_iam {
+type ModelQuestionsConnection @aws_iam @aws_api_key {
   items: [Questions]!
   nextToken: String
   startedAt: AWSTimestamp
@@ -280,6 +440,7 @@ type ModelQuestionsConnection @aws_api_key @aws_iam {
 input ModelQuestionsFilterInput {
   id: ModelIDInput
   text: ModelStringInput
+  quizID: ModelIDInput
   and: [ModelQuestionsFilterInput]
   or: [ModelQuestionsFilterInput]
   not: ModelQuestionsFilterInput
@@ -289,6 +450,7 @@ input ModelQuestionsFilterInput {
 
 input ModelQuestionsConditionInput {
   text: ModelStringInput
+  quizID: ModelIDInput
   and: [ModelQuestionsConditionInput]
   or: [ModelQuestionsConditionInput]
   not: ModelQuestionsConditionInput
@@ -299,6 +461,7 @@ input ModelQuestionsConditionInput {
 input CreateQuestionsInput {
   id: ID
   text: String
+  quizID: ID!
   _version: Int
   questionsAcceptedAnswerId: ID
 }
@@ -306,6 +469,7 @@ input CreateQuestionsInput {
 input UpdateQuestionsInput {
   id: ID!
   text: String
+  quizID: ID
   _version: Int
   questionsAcceptedAnswerId: ID
 }
@@ -318,6 +482,7 @@ input DeleteQuestionsInput {
 input ModelSubscriptionQuestionsFilterInput {
   id: ModelSubscriptionIDInput
   text: ModelSubscriptionStringInput
+  quizID: ModelSubscriptionIDInput
   and: [ModelSubscriptionQuestionsFilterInput]
   or: [ModelSubscriptionQuestionsFilterInput]
   _deleted: ModelBooleanInput

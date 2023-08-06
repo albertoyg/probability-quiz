@@ -1,50 +1,41 @@
-import { API } from "aws-amplify"
-import { GraphQLQuery } from "@aws-amplify/api"
-// import { ListAnswersQuery, QuestionAnswersByAnswerIdQuery } from "@/API"
-import { listAnswers } from "@/graphql/queries"
-import { Dispatch, SetStateAction, useEffect, useState } from "react"
-import { Button, Flex, Grid, Heading, View } from "@aws-amplify/ui-react"
-import { isDesignToken } from "@aws-amplify/ui"
- 
-export default function ({
-    question,
-    id,
-    correctAnswer,
-    questionNumber,
-    setScore,
-  }) {
-    const [answers, setAnswers] = useState([]);
-    const [disabled, setDisabled] = useState(false);
-  
-    useEffect(() => {
-      const grabData = async () => {
-        const { data } = await API.graphql({ query: listAnswers, questionId: id });
-        console.log(data);
-        setAnswers(data.listAnswers.items);
-      };
-      grabData();
-    }, [id]);
-  
-    const onClick = (selectedAnswerId) => {
-      const isCorrect = selectedAnswerId === correctAnswer;
-      setDisabled(true);
-      if (isCorrect) {
-        setScore((prev) => prev + 1);
-      }
+import { API } from "aws-amplify";
+import { listAnswers, listQuestions } from "@/graphql/queries";
+import { useState, useEffect } from "react";
+import { Button, Grid, Heading } from "@aws-amplify/ui-react";
+import question from "../question";
+
+export default function Quiz() {
+  const [score, setScore] = useState(0);
+  const [questions, setQuestions] = useState([]);
+
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      const { data } = await API.graphql({ query: listQuestions });
+      setQuestions(data.listQuestions.items);
     };
-  
-    return (
-      <Grid gap="5" isDisabled={disabled} className="answer-grid">
-        <Heading level={3}>
-            Question {questionNumber}: {question}
-        </Heading>
-        <div>Select the Correct Answer</div>
-        {/* You can map over the answers and render them here */}
-        {answers.map((answer, index) => (
-          <Button key={index} onClick={() => onClick(answer.id)}>
-            {answer.text}
-          </Button>
+    fetchQuestions();
+  }, []);
+
+  const handleAnswerClick = (selectedAnswerId, correctAnswer) => {
+    if (selectedAnswerId === correctAnswer) {
+      setScore(prev => prev + 1);
+    }
+  };
+
+  return (
+    <div>
+        <Heading level={1}>Probability Game - Current Score: {score}</Heading>
+        {questions.map((question, index) => (
+            <Question
+                key={question.id}
+                id={question.id}
+                question={question.text}
+                correctAnswer={question.AcceptedAnswer.id}
+                questionNumber={index + 1}
+                setScore={setScore}
+                answerss={question.answerss}
+            />
         ))}
-      </Grid>
-    );
-  }
+    </div>
+);
+}

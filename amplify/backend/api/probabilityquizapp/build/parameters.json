@@ -3,5 +3,5 @@
     "DynamoDBBillingMode": "PAY_PER_REQUEST",
     "DynamoDBEnableServerSideEncryption": false,
     "S3DeploymentBucket": "amplify-probabilityquizapp-staging-74938-deployment",
-    "S3DeploymentRootKey": "amplify-appsync-files/c4c0083d86f624333212ad7167134e333dcf1a2a"
+    "S3DeploymentRootKey": "amplify-appsync-files/0a859ee772f55e820b19ba8fb607011eab4e82da"
 }

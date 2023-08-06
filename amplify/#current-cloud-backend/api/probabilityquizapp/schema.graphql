@@ -1,3 +1,22 @@
+type Scores @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  score: Int
+  Quiz: Quiz @hasOne
+  owner: String
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+type Quiz @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  difficulty: Difficulty
+  Questions: [Questions] @hasMany(indexName: "byQuiz", fields: ["id"])
+}
+
 type Answers @model @auth(rules: [{allow: public}]) {
   id: ID!
   text: String
@@ -9,4 +28,6 @@ type Questions @model @auth(rules: [{allow: public}]) {
   text: String
   answerss: [Answers] @manyToMany(relationName: "AnswersQuestions")
   AcceptedAnswer: Answers @hasOne
+  quizID: ID! @index(name: "byQuiz")
 }
+ 

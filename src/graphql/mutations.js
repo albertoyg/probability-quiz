@@ -1,6 +1,159 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const createScores = /* GraphQL */ `
+  mutation CreateScores(
+    $input: CreateScoresInput!
+    $condition: ModelScoresConditionInput
+  ) {
+    createScores(input: $input, condition: $condition) {
+      id
+      score
+      Quiz {
+        id
+        difficulty
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      owner
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      scoresQuizId
+      __typename
+    }
+  }
+`;
+export const updateScores = /* GraphQL */ `
+  mutation UpdateScores(
+    $input: UpdateScoresInput!
+    $condition: ModelScoresConditionInput
+  ) {
+    updateScores(input: $input, condition: $condition) {
+      id
+      score
+      Quiz {
+        id
+        difficulty
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      owner
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      scoresQuizId
+      __typename
+    }
+  }
+`;
+export const deleteScores = /* GraphQL */ `
+  mutation DeleteScores(
+    $input: DeleteScoresInput!
+    $condition: ModelScoresConditionInput
+  ) {
+    deleteScores(input: $input, condition: $condition) {
+      id
+      score
+      Quiz {
+        id
+        difficulty
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      owner
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      scoresQuizId
+      __typename
+    }
+  }
+`;
+export const createQuiz = /* GraphQL */ `
+  mutation CreateQuiz(
+    $input: CreateQuizInput!
+    $condition: ModelQuizConditionInput
+  ) {
+    createQuiz(input: $input, condition: $condition) {
+      id
+      difficulty
+      Questions {
+        nextToken
+        startedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const updateQuiz = /* GraphQL */ `
+  mutation UpdateQuiz(
+    $input: UpdateQuizInput!
+    $condition: ModelQuizConditionInput
+  ) {
+    updateQuiz(input: $input, condition: $condition) {
+      id
+      difficulty
+      Questions {
+        nextToken
+        startedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const deleteQuiz = /* GraphQL */ `
+  mutation DeleteQuiz(
+    $input: DeleteQuizInput!
+    $condition: ModelQuizConditionInput
+  ) {
+    deleteQuiz(input: $input, condition: $condition) {
+      id
+      difficulty
+      Questions {
+        nextToken
+        startedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
 export const createAnswers = /* GraphQL */ `
   mutation CreateAnswers(
     $input: CreateAnswersInput!
@@ -90,6 +243,7 @@ export const createQuestions = /* GraphQL */ `
         _lastChangedAt
         __typename
       }
+      quizID
       createdAt
       updatedAt
       _version
@@ -123,6 +277,7 @@ export const updateQuestions = /* GraphQL */ `
         _lastChangedAt
         __typename
       }
+      quizID
       createdAt
       updatedAt
       _version
@@ -156,6 +311,7 @@ export const deleteQuestions = /* GraphQL */ `
         _lastChangedAt
         __typename
       }
+      quizID
       createdAt
       updatedAt
       _version
@@ -188,6 +344,7 @@ export const createAnswersQuestions = /* GraphQL */ `
       questions {
         id
         text
+        quizID
         createdAt
         updatedAt
         _version
@@ -227,6 +384,7 @@ export const updateAnswersQuestions = /* GraphQL */ `
       questions {
         id
         text
+        quizID
         createdAt
         updatedAt
         _version
@@ -266,6 +424,7 @@ export const deleteAnswersQuestions = /* GraphQL */ `
       questions {
         id
         text
+        quizID
         createdAt
         updatedAt
         _version

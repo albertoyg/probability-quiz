@@ -1,6 +1,6 @@
 {
   "Resources": {
-    "QuestionsAcceptedAnswerauth0FunctionQuestionsAcceptedAnswerauth0FunctionAppSyncFunction6C7C7049": {
+    "QuizQuestionsauth0FunctionQuizQuestionsauth0FunctionAppSyncFunction70FE9F7B": {
       "Type": "AWS::AppSync::FunctionConfiguration",
       "Properties": {
         "ApiId": {
@@ -9,7 +9,7 @@
         "DataSourceName": {
           "Ref": "referencetotransformerrootstackGraphQLAPINONEDS2BA9D1C8Name"
         },
-        "Name": "QuestionsAcceptedAnswerauth0Function",
+        "Name": "QuizQuestionsauth0Function",
         "FunctionVersion": "2018-05-29",
         "RequestMappingTemplateS3Location": {
           "Fn::Join": [
@@ -23,11 +23,229 @@
               {
                 "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
               },
-              "/resolvers/Questions.AcceptedAnswer.auth.1.req.vtl"
+              "/resolvers/Quiz.Questions.auth.1.req.vtl"
             ]
           ]
         },
         "ResponseMappingTemplate": "$util.toJson({})"
+      }
+    },
+    "QuizQuestionsDataResolverFnQuizQuestionsDataResolverFnAppSyncFunctionF9099A51": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackQuestionsNestedStackQuestionsNestedStackResourceF22F42D2OutputstransformerrootstackQuestionsQuestionsDataSourceB061E6ABName"
+        },
+        "Name": "QuizQuestionsDataResolverFn",
+        "FunctionVersion": "2018-05-29",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Quiz.Questions.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Quiz.Questions.res.vtl"
+            ]
+          ]
+        },
+        "SyncConfig": {
+          "ConflictDetection": "VERSION",
+          "ConflictHandler": "AUTOMERGE"
+        }
+      }
+    },
+    "QuizQuestionsResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "Questions",
+        "TypeName": "Quiz",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "QuizQuestionsauth0FunctionQuizQuestionsauth0FunctionAppSyncFunction70FE9F7B",
+                "FunctionId"
+              ]
+            },
+            {
+              "Fn::GetAtt": [
+                "QuizQuestionsDataResolverFnQuizQuestionsDataResolverFnAppSyncFunctionF9099A51",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"Quiz\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"Questions\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackQuestionsNestedStackQuestionsNestedStackResourceF22F42D2OutputstransformerrootstackQuestionsQuestionsTable4809A863Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", \"30\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackauthRoleNameFB872D50Ref"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)"
+      }
+    },
+    "ScoresQuizDataResolverFnScoresQuizDataResolverFnAppSyncFunctionFC456C2E": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackQuizNestedStackQuizNestedStackResource6795258DOutputstransformerrootstackQuizQuizDataSource6EF87D07Name"
+        },
+        "Name": "ScoresQuizDataResolverFn",
+        "FunctionVersion": "2018-05-29",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Scores.Quiz.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Scores.Quiz.res.vtl"
+            ]
+          ]
+        },
+        "SyncConfig": {
+          "ConflictDetection": "VERSION",
+          "ConflictHandler": "AUTOMERGE"
+        }
+      }
+    },
+    "ScoresQuizResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "Quiz",
+        "TypeName": "Scores",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "QuizQuestionsauth0FunctionQuizQuestionsauth0FunctionAppSyncFunction70FE9F7B",
+                "FunctionId"
+              ]
+            },
+            {
+              "Fn::GetAtt": [
+                "ScoresQuizDataResolverFnScoresQuizDataResolverFnAppSyncFunctionFC456C2E",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"Scores\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"Quiz\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackQuizNestedStackQuizNestedStackResource6795258DOutputstransformerrootstackQuizQuizTableACA397B4Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", \"30\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackauthRoleNameFB872D50Ref"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)"
       }
     },
     "QuestionsAcceptedAnswerDataResolverFnQuestionsAcceptedAnswerDataResolverFnAppSyncFunctionE38D3038": {
@@ -92,7 +310,7 @@
           "Functions": [
             {
               "Fn::GetAtt": [
-                "QuestionsAcceptedAnswerauth0FunctionQuestionsAcceptedAnswerauth0FunctionAppSyncFunction6C7C7049",
+                "QuizQuestionsauth0FunctionQuizQuestionsauth0FunctionAppSyncFunction70FE9F7B",
                 "FunctionId"
               ]
             },
@@ -201,7 +419,7 @@
           "Functions": [
             {
               "Fn::GetAtt": [
-                "QuestionsAcceptedAnswerauth0FunctionQuestionsAcceptedAnswerauth0FunctionAppSyncFunction6C7C7049",
+                "QuizQuestionsauth0FunctionQuizQuestionsauth0FunctionAppSyncFunction70FE9F7B",
                 "FunctionId"
               ]
             },
@@ -310,7 +528,7 @@
           "Functions": [
             {
               "Fn::GetAtt": [
-                "QuestionsAcceptedAnswerauth0FunctionQuestionsAcceptedAnswerauth0FunctionAppSyncFunction6C7C7049",
+                "QuizQuestionsauth0FunctionQuizQuestionsauth0FunctionAppSyncFunction70FE9F7B",
                 "FunctionId"
               ]
             },
@@ -419,7 +637,7 @@
           "Functions": [
             {
               "Fn::GetAtt": [
-                "QuestionsAcceptedAnswerauth0FunctionQuestionsAcceptedAnswerauth0FunctionAppSyncFunction6C7C7049",
+                "QuizQuestionsauth0FunctionQuizQuestionsauth0FunctionAppSyncFunction70FE9F7B",
                 "FunctionId"
               ]
             },
@@ -528,7 +746,7 @@
           "Functions": [
             {
               "Fn::GetAtt": [
-                "QuestionsAcceptedAnswerauth0FunctionQuestionsAcceptedAnswerauth0FunctionAppSyncFunction6C7C7049",
+                "QuizQuestionsauth0FunctionQuizQuestionsauth0FunctionAppSyncFunction70FE9F7B",
                 "FunctionId"
               ]
             },
@@ -589,10 +807,10 @@
     "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref": {
       "Type": "String"
     },
-    "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersAnswersDataSourceA948D649Name": {
+    "referencetotransformerrootstackQuestionsNestedStackQuestionsNestedStackResourceF22F42D2OutputstransformerrootstackQuestionsQuestionsDataSourceB061E6ABName": {
       "Type": "String"
     },
-    "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersAnswersTable0FC1A192Ref": {
+    "referencetotransformerrootstackQuestionsNestedStackQuestionsNestedStackResourceF22F42D2OutputstransformerrootstackQuestionsQuestionsTable4809A863Ref": {
       "Type": "String"
     },
     "referencetotransformerrootstackauthRoleNameFB872D50Ref": {
@@ -601,10 +819,16 @@
     "referencetotransformerrootstackunauthRoleName49F3C1FERef": {
       "Type": "String"
     },
-    "referencetotransformerrootstackQuestionsNestedStackQuestionsNestedStackResourceF22F42D2OutputstransformerrootstackQuestionsQuestionsDataSourceB061E6ABName": {
+    "referencetotransformerrootstackQuizNestedStackQuizNestedStackResource6795258DOutputstransformerrootstackQuizQuizDataSource6EF87D07Name": {
       "Type": "String"
     },
-    "referencetotransformerrootstackQuestionsNestedStackQuestionsNestedStackResourceF22F42D2OutputstransformerrootstackQuestionsQuestionsTable4809A863Ref": {
+    "referencetotransformerrootstackQuizNestedStackQuizNestedStackResource6795258DOutputstransformerrootstackQuizQuizTableACA397B4Ref": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersAnswersDataSourceA948D649Name": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersAnswersTable0FC1A192Ref": {
       "Type": "String"
     },
     "referencetotransformerrootstackAnswersQuestionsNestedStackAnswersQuestionsNestedStackResourceA8190347OutputstransformerrootstackAnswersQuestionsAnswersQuestionsDataSource4D02EE8DName": {

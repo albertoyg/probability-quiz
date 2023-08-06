@@ -49,10 +49,10 @@
     "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref": {
       "Type": "String"
     },
-    "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersQuerygetAnswersauth0FunctionQuerygetAnswersauth0FunctionAppSyncFunction2F830ACBFunctionId": {
+    "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresQuerygetScoresauth0FunctionQuerygetScoresauth0FunctionAppSyncFunction8A5D3045FunctionId": {
       "Type": "String"
     },
-    "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersQuerygetAnswerspostAuth0FunctionQuerygetAnswerspostAuth0FunctionAppSyncFunction3F8C4DEBFunctionId": {
+    "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresQuerygetScorespostAuth0FunctionQuerygetScorespostAuth0FunctionAppSyncFunction27FF3CE8FunctionId": {
       "Type": "String"
     },
     "referencetotransformerrootstackauthRoleNameFB872D50Ref": {
@@ -64,19 +64,19 @@
     "referencetotransformerrootstackGraphQLAPINONEDS2BA9D1C8Name": {
       "Type": "String"
     },
-    "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersMutationcreateAnswersinit0FunctionMutationcreateAnswersinit0FunctionAppSyncFunction340E3734FunctionId": {
+    "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresMutationcreateScoresinit0FunctionMutationcreateScoresinit0FunctionAppSyncFunction4A237031FunctionId": {
       "Type": "String"
     },
-    "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersMutationcreateAnswersauth0FunctionMutationcreateAnswersauth0FunctionAppSyncFunctionD2600A30FunctionId": {
+    "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresMutationcreateScoresauth0FunctionMutationcreateScoresauth0FunctionAppSyncFunction6B973143FunctionId": {
       "Type": "String"
     },
-    "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersMutationupdateAnswersinit0FunctionMutationupdateAnswersinit0FunctionAppSyncFunction60C98961FunctionId": {
+    "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresMutationupdateScoresinit0FunctionMutationupdateScoresinit0FunctionAppSyncFunction749555CDFunctionId": {
       "Type": "String"
     },
-    "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersSubscriptiononCreateAnswersauth0FunctionSubscriptiononCreateAnswersauth0FunctionAppSyncFunction8BD49A4AFunctionId": {
+    "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresSubscriptiononCreateScoresauth0FunctionSubscriptiononCreateScoresauth0FunctionAppSyncFunction59C6383DFunctionId": {
       "Type": "String"
     },
-    "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersSubscriptionOnCreateAnswersDataResolverFnSubscriptionOnCreateAnswersDataResolverFnAppSyncFunctionB782E6B1FunctionId": {
+    "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresSubscriptionOnCreateScoresDataResolverFnSubscriptionOnCreateScoresDataResolverFnAppSyncFunctionC1D26198FunctionId": {
       "Type": "String"
     }
   },
@@ -591,10 +591,10 @@
         "PipelineConfig": {
           "Functions": [
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersQuerygetAnswersauth0FunctionQuerygetAnswersauth0FunctionAppSyncFunction2F830ACBFunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresQuerygetScoresauth0FunctionQuerygetScoresauth0FunctionAppSyncFunction8A5D3045FunctionId"
             },
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersQuerygetAnswerspostAuth0FunctionQuerygetAnswerspostAuth0FunctionAppSyncFunction3F8C4DEBFunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresQuerygetScorespostAuth0FunctionQuerygetScorespostAuth0FunctionAppSyncFunction27FF3CE8FunctionId"
             },
             {
               "Fn::GetAtt": [
@@ -706,10 +706,10 @@
         "PipelineConfig": {
           "Functions": [
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersQuerygetAnswersauth0FunctionQuerygetAnswersauth0FunctionAppSyncFunction2F830ACBFunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresQuerygetScoresauth0FunctionQuerygetScoresauth0FunctionAppSyncFunction8A5D3045FunctionId"
             },
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersQuerygetAnswerspostAuth0FunctionQuerygetAnswerspostAuth0FunctionAppSyncFunction3F8C4DEBFunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresQuerygetScorespostAuth0FunctionQuerygetScorespostAuth0FunctionAppSyncFunction27FF3CE8FunctionId"
             },
             {
               "Fn::GetAtt": [
@@ -857,10 +857,10 @@
               ]
             },
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersQuerygetAnswersauth0FunctionQuerygetAnswersauth0FunctionAppSyncFunction2F830ACBFunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresQuerygetScoresauth0FunctionQuerygetScoresauth0FunctionAppSyncFunction8A5D3045FunctionId"
             },
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersQuerygetAnswerspostAuth0FunctionQuerygetAnswerspostAuth0FunctionAppSyncFunction3F8C4DEBFunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresQuerygetScorespostAuth0FunctionQuerygetScorespostAuth0FunctionAppSyncFunction27FF3CE8FunctionId"
             },
             {
               "Fn::GetAtt": [
@@ -972,13 +972,13 @@
         "PipelineConfig": {
           "Functions": [
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersMutationcreateAnswersinit0FunctionMutationcreateAnswersinit0FunctionAppSyncFunction340E3734FunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresMutationcreateScoresinit0FunctionMutationcreateScoresinit0FunctionAppSyncFunction4A237031FunctionId"
             },
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersMutationcreateAnswersauth0FunctionMutationcreateAnswersauth0FunctionAppSyncFunctionD2600A30FunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresMutationcreateScoresauth0FunctionMutationcreateScoresauth0FunctionAppSyncFunction6B973143FunctionId"
             },
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersQuerygetAnswerspostAuth0FunctionQuerygetAnswerspostAuth0FunctionAppSyncFunction3F8C4DEBFunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresQuerygetScorespostAuth0FunctionQuerygetScorespostAuth0FunctionAppSyncFunction27FF3CE8FunctionId"
             },
             {
               "Fn::GetAtt": [
@@ -1141,7 +1141,7 @@
         "PipelineConfig": {
           "Functions": [
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersMutationupdateAnswersinit0FunctionMutationupdateAnswersinit0FunctionAppSyncFunction60C98961FunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresMutationupdateScoresinit0FunctionMutationupdateScoresinit0FunctionAppSyncFunction749555CDFunctionId"
             },
             {
               "Fn::GetAtt": [
@@ -1150,7 +1150,7 @@
               ]
             },
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersQuerygetAnswerspostAuth0FunctionQuerygetAnswerspostAuth0FunctionAppSyncFunction3F8C4DEBFunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresQuerygetScorespostAuth0FunctionQuerygetScorespostAuth0FunctionAppSyncFunction27FF3CE8FunctionId"
             },
             {
               "Fn::GetAtt": [
@@ -1319,7 +1319,7 @@
               ]
             },
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersQuerygetAnswerspostAuth0FunctionQuerygetAnswerspostAuth0FunctionAppSyncFunction3F8C4DEBFunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresQuerygetScorespostAuth0FunctionQuerygetScorespostAuth0FunctionAppSyncFunction27FF3CE8FunctionId"
             },
             {
               "Fn::GetAtt": [
@@ -1376,13 +1376,13 @@
         "PipelineConfig": {
           "Functions": [
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersSubscriptiononCreateAnswersauth0FunctionSubscriptiononCreateAnswersauth0FunctionAppSyncFunction8BD49A4AFunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresSubscriptiononCreateScoresauth0FunctionSubscriptiononCreateScoresauth0FunctionAppSyncFunction59C6383DFunctionId"
             },
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersQuerygetAnswerspostAuth0FunctionQuerygetAnswerspostAuth0FunctionAppSyncFunction3F8C4DEBFunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresQuerygetScorespostAuth0FunctionQuerygetScorespostAuth0FunctionAppSyncFunction27FF3CE8FunctionId"
             },
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersSubscriptionOnCreateAnswersDataResolverFnSubscriptionOnCreateAnswersDataResolverFnAppSyncFunctionB782E6B1FunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresSubscriptionOnCreateScoresDataResolverFnSubscriptionOnCreateScoresDataResolverFnAppSyncFunctionC1D26198FunctionId"
             }
           ]
         },
@@ -1429,13 +1429,13 @@
         "PipelineConfig": {
           "Functions": [
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersSubscriptiononCreateAnswersauth0FunctionSubscriptiononCreateAnswersauth0FunctionAppSyncFunction8BD49A4AFunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresSubscriptiononCreateScoresauth0FunctionSubscriptiononCreateScoresauth0FunctionAppSyncFunction59C6383DFunctionId"
             },
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersQuerygetAnswerspostAuth0FunctionQuerygetAnswerspostAuth0FunctionAppSyncFunction3F8C4DEBFunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresQuerygetScorespostAuth0FunctionQuerygetScorespostAuth0FunctionAppSyncFunction27FF3CE8FunctionId"
             },
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersSubscriptionOnCreateAnswersDataResolverFnSubscriptionOnCreateAnswersDataResolverFnAppSyncFunctionB782E6B1FunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresSubscriptionOnCreateScoresDataResolverFnSubscriptionOnCreateScoresDataResolverFnAppSyncFunctionC1D26198FunctionId"
             }
           ]
         },
@@ -1482,13 +1482,13 @@
         "PipelineConfig": {
           "Functions": [
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersSubscriptiononCreateAnswersauth0FunctionSubscriptiononCreateAnswersauth0FunctionAppSyncFunction8BD49A4AFunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresSubscriptiononCreateScoresauth0FunctionSubscriptiononCreateScoresauth0FunctionAppSyncFunction59C6383DFunctionId"
             },
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersQuerygetAnswerspostAuth0FunctionQuerygetAnswerspostAuth0FunctionAppSyncFunction3F8C4DEBFunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresQuerygetScorespostAuth0FunctionQuerygetScorespostAuth0FunctionAppSyncFunction27FF3CE8FunctionId"
             },
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersSubscriptionOnCreateAnswersDataResolverFnSubscriptionOnCreateAnswersDataResolverFnAppSyncFunctionB782E6B1FunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresSubscriptionOnCreateScoresDataResolverFnSubscriptionOnCreateScoresDataResolverFnAppSyncFunctionC1D26198FunctionId"
             }
           ]
         },
@@ -1590,10 +1590,10 @@
         "PipelineConfig": {
           "Functions": [
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersQuerygetAnswersauth0FunctionQuerygetAnswersauth0FunctionAppSyncFunction2F830ACBFunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresQuerygetScoresauth0FunctionQuerygetScoresauth0FunctionAppSyncFunction8A5D3045FunctionId"
             },
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersQuerygetAnswerspostAuth0FunctionQuerygetAnswerspostAuth0FunctionAppSyncFunction3F8C4DEBFunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresQuerygetScorespostAuth0FunctionQuerygetScorespostAuth0FunctionAppSyncFunction27FF3CE8FunctionId"
             },
             {
               "Fn::GetAtt": [
@@ -1705,10 +1705,10 @@
         "PipelineConfig": {
           "Functions": [
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersQuerygetAnswersauth0FunctionQuerygetAnswersauth0FunctionAppSyncFunction2F830ACBFunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresQuerygetScoresauth0FunctionQuerygetScoresauth0FunctionAppSyncFunction8A5D3045FunctionId"
             },
             {
-              "Ref": "referencetotransformerrootstackAnswersNestedStackAnswersNestedStackResource283B5154OutputstransformerrootstackAnswersQuerygetAnswerspostAuth0FunctionQuerygetAnswerspostAuth0FunctionAppSyncFunction3F8C4DEBFunctionId"
+              "Ref": "referencetotransformerrootstackScoresNestedStackScoresNestedStackResource2BA1626BOutputstransformerrootstackScoresQuerygetScorespostAuth0FunctionQuerygetScorespostAuth0FunctionAppSyncFunction27FF3CE8FunctionId"
             },
             {
               "Fn::GetAtt": [

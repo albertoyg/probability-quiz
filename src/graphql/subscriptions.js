@@ -1,6 +1,141 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateScores = /* GraphQL */ `
+  subscription OnCreateScores($filter: ModelSubscriptionScoresFilterInput) {
+    onCreateScores(filter: $filter) {
+      id
+      score
+      Quiz {
+        id
+        difficulty
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      owner
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      scoresQuizId
+      __typename
+    }
+  }
+`;
+export const onUpdateScores = /* GraphQL */ `
+  subscription OnUpdateScores($filter: ModelSubscriptionScoresFilterInput) {
+    onUpdateScores(filter: $filter) {
+      id
+      score
+      Quiz {
+        id
+        difficulty
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      owner
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      scoresQuizId
+      __typename
+    }
+  }
+`;
+export const onDeleteScores = /* GraphQL */ `
+  subscription OnDeleteScores($filter: ModelSubscriptionScoresFilterInput) {
+    onDeleteScores(filter: $filter) {
+      id
+      score
+      Quiz {
+        id
+        difficulty
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      owner
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      scoresQuizId
+      __typename
+    }
+  }
+`;
+export const onCreateQuiz = /* GraphQL */ `
+  subscription OnCreateQuiz($filter: ModelSubscriptionQuizFilterInput) {
+    onCreateQuiz(filter: $filter) {
+      id
+      difficulty
+      Questions {
+        nextToken
+        startedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateQuiz = /* GraphQL */ `
+  subscription OnUpdateQuiz($filter: ModelSubscriptionQuizFilterInput) {
+    onUpdateQuiz(filter: $filter) {
+      id
+      difficulty
+      Questions {
+        nextToken
+        startedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteQuiz = /* GraphQL */ `
+  subscription OnDeleteQuiz($filter: ModelSubscriptionQuizFilterInput) {
+    onDeleteQuiz(filter: $filter) {
+      id
+      difficulty
+      Questions {
+        nextToken
+        startedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
 export const onCreateAnswers = /* GraphQL */ `
   subscription OnCreateAnswers($filter: ModelSubscriptionAnswersFilterInput) {
     onCreateAnswers(filter: $filter) {
@@ -80,6 +215,7 @@ export const onCreateQuestions = /* GraphQL */ `
         _lastChangedAt
         __typename
       }
+      quizID
       createdAt
       updatedAt
       _version
@@ -112,6 +248,7 @@ export const onUpdateQuestions = /* GraphQL */ `
         _lastChangedAt
         __typename
       }
+      quizID
       createdAt
       updatedAt
       _version
@@ -144,6 +281,7 @@ export const onDeleteQuestions = /* GraphQL */ `
         _lastChangedAt
         __typename
       }
+      quizID
       createdAt
       updatedAt
       _version
@@ -175,6 +313,7 @@ export const onCreateAnswersQuestions = /* GraphQL */ `
       questions {
         id
         text
+        quizID
         createdAt
         updatedAt
         _version
@@ -213,6 +352,7 @@ export const onUpdateAnswersQuestions = /* GraphQL */ `
       questions {
         id
         text
+        quizID
         createdAt
         updatedAt
         _version
@@ -251,6 +391,7 @@ export const onDeleteAnswersQuestions = /* GraphQL */ `
       questions {
         id
         text
+        quizID
         createdAt
         updatedAt
         _version

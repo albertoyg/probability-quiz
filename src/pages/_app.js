@@ -1,4 +1,4 @@
-import '@/styles/globals.css'
+import '@/styles/globals.scss'
 import { Amplify } from 'aws-amplify'
 import "@aws-amplify/ui-react/styles.css";
 import { withAuthenticator } from '@aws-amplify/ui-react';

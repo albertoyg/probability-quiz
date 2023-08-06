@@ -152,6 +152,26 @@
         }
       }
     },
+    "apiprobabilityquizapp": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-probabilityquizapp-staging-74938-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "Parameters": {
+          "AppSyncApiName": "probabilityquizapp",
+          "DynamoDBBillingMode": "PAY_PER_REQUEST",
+          "DynamoDBEnableServerSideEncryption": false,
+          "authRoleName": {
+            "Ref": "AuthRoleName"
+          },
+          "unauthRoleName": {
+            "Ref": "UnauthRoleName"
+          },
+          "S3DeploymentBucket": "amplify-probabilityquizapp-staging-74938-deployment",
+          "S3DeploymentRootKey": "amplify-appsync-files/0a859ee772f55e820b19ba8fb607011eab4e82da",
+          "env": "staging"
+        }
+      }
+    },
     "authprobabilityquizapp": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
@@ -206,26 +226,6 @@
           },
           "breakCircularDependency": true,
           "dependsOn": "",
-          "env": "staging"
-        }
-      }
-    },
-    "apiprobabilityquizapp": {
-      "Type": "AWS::CloudFormation::Stack",
-      "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-probabilityquizapp-staging-74938-deployment/amplify-cfn-templates/api/cloudformation-template.json",
-        "Parameters": {
-          "AppSyncApiName": "probabilityquizapp",
-          "DynamoDBBillingMode": "PAY_PER_REQUEST",
-          "DynamoDBEnableServerSideEncryption": false,
-          "authRoleName": {
-            "Ref": "AuthRoleName"
-          },
-          "unauthRoleName": {
-            "Ref": "UnauthRoleName"
-          },
-          "S3DeploymentBucket": "amplify-probabilityquizapp-staging-74938-deployment",
-          "S3DeploymentRootKey": "amplify-appsync-files/c4c0083d86f624333212ad7167134e333dcf1a2a",
           "env": "staging"
         }
       }
