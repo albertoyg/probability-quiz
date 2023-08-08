@@ -1,5 +1,62 @@
-body { 
-  background-color: #77a6f7;
+// handles sign out button positioned in the top right of the screen. 
+// keep rest of the styles as imported
+body {
+  background-color: #121715;
   font-family: 'Roboto', sans-serif;
+}
+
+.fullScreenContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  .signOutButton {
+    position: absolute;
+    top: 16px;
+    right: 16px; 
+  }
+
+  .homeButton {
+    position: absolute;
+    top: 16px;
+    left: 16px; 
+  }
+
+  // centered at the middle of the screen, horizontally and vertically
+  // will be used to contain components in the middle of the screen
+  .centerStage { 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    height: 40%;
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
+
+    // h1 will contain the title of the page
+    // it will be centered at the top of centerstage in the middle
+    // Transform centerStage into a flex container
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; // Pushes h1 to the top and buttonContainer to the center
+
+    h1 {
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      flex-shrink: 0; // Ensures h1 doesn't shrink when space is limited
+    }
+
+    .buttonContainer {
+      flex-grow: 1; // Allows buttonContainer to occupy the available space
+      display: flex;         
+      flex-direction: column; 
+      align-items: center;
+      gap: 10px;              
+      justify-content: center;
+    }
+}
 }
 
