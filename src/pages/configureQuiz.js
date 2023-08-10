@@ -24,7 +24,15 @@ export default function configureQuiz() {
         {/* button container */}
         <div className='buttonContainer'>
           {/* will contain buttons and format them as a list */}
-          
+          <Link href="/quiz?difficulty=easy">
+              <MUIButton variant="outlined" className='quizButton'>Easy</MUIButton>
+          </Link>
+          <Link href="/quiz?difficulty=medium">
+              <MUIButton variant="outlined" className='quizButton'>Medium</MUIButton>
+          </Link>
+          <Link href="/quiz?difficulty=hard">
+              <MUIButton variant="outlined" className='quizButton'>Hard</MUIButton>
+          </Link>
         </div>
       </div>
     </div>
